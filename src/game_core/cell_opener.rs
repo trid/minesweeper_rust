@@ -54,8 +54,10 @@ impl CellOpener {
             return OpenResult::Success;
         }
 
-        if let CellType::Counter(counter) = cell.cell_type {
-            mine_field.open_cell(cell_coordinates);
+        let cell_type = cell.cell_type.clone();
+        mine_field.open_cell(cell_coordinates);
+
+        if let CellType::Counter(counter) = cell_type {
             if counter == 0 {
                 Self::open_tiles_breath_first(mine_field, cell_coordinates);
             }
