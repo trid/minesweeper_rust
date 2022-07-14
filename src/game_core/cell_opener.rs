@@ -49,13 +49,13 @@ impl CellOpener {
 
 
     pub fn open_cell(mine_field: &mut Minefield, cell_coordinates: CellCoordinates) -> OpenResult {
-        let cell = mine_field.cell(cell_coordinates).clone();
+        let cell = mine_field.cell(cell_coordinates);
         if cell.open {
             return OpenResult::Success;
         }
 
-        mine_field.open_cell(cell_coordinates);
         if let CellType::Counter(counter) = cell.cell_type {
+            mine_field.open_cell(cell_coordinates);
             if counter == 0 {
                 Self::open_tiles_breath_first(mine_field, cell_coordinates);
             }
