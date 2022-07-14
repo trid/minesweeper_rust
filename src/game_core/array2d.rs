@@ -1,7 +1,5 @@
 use std::ops;
 
-use crate::CellType;
-use crate::core::minefield::Cell;
 
 pub struct Array2D<T: Default + Clone> {
     data: Vec<T>,

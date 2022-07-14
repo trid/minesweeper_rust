@@ -1,4 +1,5 @@
-use crate::core::array2d::Array2D;
+use crate::game_core::array2d::Array2D;
+use crate::game_core::defines::CellCoordinates;
 
 
 #[derive(Clone)]
@@ -31,8 +32,12 @@ impl Minefield {
         self.field.height()
     }
 
-    pub fn cell(&self, x: usize, y: usize) -> &Cell {
-        &self.field[(x, y)]
+    pub fn cell(&self, cell_coordinates: CellCoordinates) -> &Cell {
+        &self.field[cell_coordinates]
+    }
+
+    pub fn open_cell(&mut self, cell_coordinates: CellCoordinates) {
+        self.field[cell_coordinates].open = true;
     }
 }
 

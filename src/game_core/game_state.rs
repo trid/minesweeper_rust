@@ -10,10 +10,6 @@ impl GameState {
         GameState { mine_field }
     }
 
-    pub fn mine_field(&self) -> &Minefield {
-        &self.mine_field
-    }
-
     pub fn mine_field_mut(&mut self) -> &mut Minefield {
         &mut self.mine_field
     }
